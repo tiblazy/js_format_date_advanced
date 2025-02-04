@@ -8,7 +8,13 @@
  * @returns {string}
  */
 function formatDate(date, fromFormat, toFormat) {
-  const splitFromFormat = fromFormat[3];
+  const splitFromFormat = fromFormat.find(
+    (formatMethod) => formatMethod.length === 1,
+  );
+  const splitToFormat = toFormat.find(
+    (formatMethod) => formatMethod.length === 1,
+  );
+
   const splitDate = date.split(splitFromFormat);
 
   let day = '';
@@ -46,7 +52,7 @@ function formatDate(date, fromFormat, toFormat) {
     }
 
     if (i < toFormat.length - 2) {
-      newDate += toFormat[3];
+      newDate += splitToFormat;
     }
   }
 
